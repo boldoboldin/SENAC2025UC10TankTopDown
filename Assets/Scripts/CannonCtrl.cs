@@ -24,8 +24,7 @@ public class CannonCtrl : MonoBehaviour
 
         float previousAngle = cannonTransform.eulerAngles.z;
 
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * 
-        Mathf.Rad2Deg; //
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
 
         float currentAngle = Mathf.LerpAngle(previousAngle, 
         
