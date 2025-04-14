@@ -7,8 +7,8 @@ public class ShotCtrl : MonoBehaviour
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Transform shotSpawPoint;
     [SerializeField] private GameObject shotPrefab;
-    
-        private Collider2D col2d;
+    [SerializeField] private Animator cannonAnim;
+    private Collider2D col2d;
 
     [SerializeField] private float shotSpd, fireRate;
 
@@ -53,6 +53,8 @@ public class ShotCtrl : MonoBehaviour
         GameObject shotInstace = Instantiate(shotPrefab, spawnPos, Quaternion.identity);
         shotInstace.transform.up = direction;
         Physics2D.IgnoreCollision(col2d, shotInstace.GetComponent <Collider2D>());
+
+        cannonAnim.SetTrigger("atkInput");
 
         if(shotInstace.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {

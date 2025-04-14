@@ -307,6 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1003276775}
+  - component: {fileID: 1003276776}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -330,6 +331,27 @@ Transform:
   - {fileID: 1854218151}
   m_Father: {fileID: 1640645570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1003276776
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003276774}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9597607548634145bdc038f5935be66, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1010150573
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010150574}
+  - component: {fileID: 1010150575}
   m_Layer: 0
   m_Name: Tracks
   m_TagString: Untagged
@@ -362,6 +385,27 @@ Transform:
   - {fileID: 265433822}
   m_Father: {fileID: 1640645570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1010150575
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010150573}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cebd7766d6a82c49a74331eeb994a70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1640645569
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: c850c0b3edba1c2429c4b427994bc3ee, type: 2}
+  tracksAnim: {fileID: 1010150575}
   moveSpd: 1
   rotationSpd: 100
 --- !u!114 &1640645572
@@ -471,7 +516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: c850c0b3edba1c2429c4b427994bc3ee, type: 2}
   shotSpawPoint: {fileID: 1641413594}
-  shotPrefab: {fileID: 6642245997905464421, guid: a7620f53a7098c74b86454731ddcb699, type: 3}
+  shotPrefab: {fileID: 2420854336745855466, guid: c83af053429f12449a83c0e18b604feb, type: 3}
+  cannonAnim: {fileID: 1003276776}
   shotSpd: 10
   fireRate: 0.75
 --- !u!61 &1640645575

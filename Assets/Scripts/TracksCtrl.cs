@@ -5,6 +5,7 @@ using UnityEngine;
 public class TracksCtrl : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private Animator tracksAnim;
     private Transform tankTransform;
     private Rigidbody2D rb; 
 
@@ -38,5 +39,7 @@ public class TracksCtrl : MonoBehaviour
     private void HandleMove(Vector2 moveInput)
     {
         previousMoveInput = moveInput;
+
+        tracksAnim.SetFloat("moveInput", moveInput.magnitude);
     }
 }

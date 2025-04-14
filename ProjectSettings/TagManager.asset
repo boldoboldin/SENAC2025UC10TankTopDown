@@ -44,3 +44,6 @@ TagManager:
   - name: Player
     uniqueID: 3349984661
     locked: 0
+  - name: Shot
+    uniqueID: 2012706753
+    locked: 0
