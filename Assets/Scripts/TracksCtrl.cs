@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class TracksCtrl : MonoBehaviour
+public class TracksCtrl : NetworkBehaviour
 {
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Animator tracksAnim;
     private Transform tankTransform;
     private Rigidbody2D rb; 
 
-    
     [SerializeField] private float moveSpd;
     [SerializeField] private float rotationSpd;
     private Vector2 previousMoveInput;

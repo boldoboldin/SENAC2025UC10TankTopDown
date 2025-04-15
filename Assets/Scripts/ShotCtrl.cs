@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class ShotCtrl : MonoBehaviour
+public class ShotCtrl : NetworkBehaviour
 {
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Transform shotSpawPoint;
@@ -11,7 +12,6 @@ public class ShotCtrl : MonoBehaviour
     private Collider2D col2d;
 
     [SerializeField] private float shotSpd, fireRate;
-
     
     private bool shouldFire;
     private float timer;

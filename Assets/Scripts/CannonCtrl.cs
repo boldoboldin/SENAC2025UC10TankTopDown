@@ -1,19 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class CannonCtrl : MonoBehaviour
+public class CannonCtrl : NetworkBehaviour
 {
     [SerializeField] private Transform cannonTransform;
     [SerializeField] private InputReader inputReader;
 
     [SerializeField] private float rotationSpd;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
