@@ -13,6 +13,11 @@ public class CannonCtrl : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
+        
         Vector2 aimScreenPos = inputReader.aimPosition;
         Vector2 aimWorldPos = Camera.main.ScreenToWorldPoint(aimScreenPos);
         Vector2 direction = aimWorldPos - (Vector2)cannonTransform.position;

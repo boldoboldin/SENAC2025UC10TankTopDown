@@ -16,10 +16,31 @@ public class ShotCtrl : NetworkBehaviour
     private bool shouldFire;
     private float timer;
 
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            return;
+        }
+
+        inputReader.PrimaryFireEvent += HandlePrimaryFire;
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        if (!IsOwner)
+        {
+            return;
+        }
+
+        inputReader.PrimaryFireEvent -= HandlePrimaryFire;
+    }
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-        inputReader.PrimaryFireEvent += HandlePrimaryFire;
+        
 
         col2d = GetComponent<Collider2D>();
     }
