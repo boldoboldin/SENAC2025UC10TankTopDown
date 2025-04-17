@@ -91,7 +91,7 @@ public class ShotCtrl : NetworkBehaviour
     }
 
 
-    [ServerRpc] private void SpawnVirtalShotClientRpc(Vector3 spawnPos, Vector3 direction)
+    [ClientRpc] private void SpawnVirtalShotClientRpc(Vector3 spawnPos, Vector3 direction)
     {
         if (!IsOwner)
         {
