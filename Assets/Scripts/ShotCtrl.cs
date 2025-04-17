@@ -40,8 +40,6 @@ public class ShotCtrl : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
         col2d = GetComponent<Collider2D>();
     }
 
@@ -53,6 +51,11 @@ public class ShotCtrl : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
+        
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -64,12 +67,14 @@ public class ShotCtrl : NetworkBehaviour
             return;
         }
 
-        PrimaryFire(shotSpawPoint.position, shotSpawPoint.up);
+        PrimaryFireServerRpc(shotSpawPoint.position, shotSpawPoint.up);
+        SpawnVirtualShot(shotSpawPoint.position, shotSpawPoint.up);
 
         timer = 1 / fireRate;
     }
 
-    private void PrimaryFire(Vector3 spawnPos, Vector3 direction)
+    
+    [ServerRpc] private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 direction)
     {
         GameObject shotInstace = Instantiate(shotPrefab, spawnPos, Quaternion.identity);
         shotInstace.transform.up = direction;
@@ -81,6 +86,32 @@ public class ShotCtrl : NetworkBehaviour
         {
             rb.velocity = rb.transform.up * shotSpd;
         }
+
+        SpawnVirtalShotClientRpc(spawnPos, direction);
+    }
+
+
+    [ServerRpc] private void SpawnVirtalShotClientRpc(Vector3 spawnPos, Vector3 direction)
+    {
+        if (!IsOwner)
+        {
+            return;
+        }
+
+        SpawnVirtualShot(spawnPos, direction);
+    }
+
+    private void SpawnVirtualShot(Vector3 spawnPos, Vector3 direction)
+    {
+        GameObject shotInstace = Instantiate(shotPrefab, spawnPos, Quaternion.identity);
+        shotInstace.transform.up = direction;
+        Physics2D.IgnoreCollision(col2d, shotInstace.GetComponent <Collider2D>());
+
+        if(shotInstace.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+        {
+            rb.velocity = rb.transform.up * shotSpd;
+        }
+
     }
     
 }
