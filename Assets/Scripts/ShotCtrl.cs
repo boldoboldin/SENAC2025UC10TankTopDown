@@ -74,7 +74,9 @@ public class ShotCtrl : NetworkBehaviour
     }
 
     
-    [ServerRpc] private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 direction)
+
+    [ServerRpc]
+    private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 direction)
     {
         GameObject shotInstace = Instantiate(shotPrefab, spawnPos, Quaternion.identity);
         shotInstace.transform.up = direction;
@@ -91,7 +93,8 @@ public class ShotCtrl : NetworkBehaviour
     }
 
 
-    [ClientRpc] private void SpawnVirtalShotClientRpc(Vector3 spawnPos, Vector3 direction)
+    [ClientRpc]
+    private void SpawnVirtalShotClientRpc(Vector3 spawnPos, Vector3 direction)
     {
         if (!IsOwner)
         {
