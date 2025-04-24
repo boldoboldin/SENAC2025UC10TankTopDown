@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using System.Runtime.InteropServices;
 
 public class ShotCtrl : NetworkBehaviour
 {
@@ -83,6 +84,11 @@ public class ShotCtrl : NetworkBehaviour
         Physics2D.IgnoreCollision(col2d, shotInstace.GetComponent <Collider2D>());
 
         cannonAnim.SetTrigger("atkInput");
+
+        if (shotInstace.TryGetComponent<DealDamageOnContact>(out DealDamageOnContact dealDamage))
+        {
+            dealDamage.SetOwner(OwnerClientId);
+        }
 
         if(shotInstace.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {

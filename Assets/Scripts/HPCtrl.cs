@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class HPCtrl : NetworkBehaviour
 {
-    [SerializeField] public int maxHP {get; private set; } = 100;
+    [field: SerializeField] public int maxHP {get; private set; } = 100;
     public NetworkVariable<int> currentHP = new NetworkVariable<int>();
     private bool isDead;
     public Action<HPCtrl> onDie;
     
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner)
+        if (!IsServer)
         {
             return;
         }
@@ -28,8 +28,7 @@ public class HPCtrl : NetworkBehaviour
 
     public void RestoredHeath (int healValue)
     {
-        ModifyHealth(
-            healValue);
+        ModifyHealth(healValue);
     }
 
     public void ModifyHealth(int value)
